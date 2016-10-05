@@ -21,7 +21,7 @@ module.exports = function(req,res,next){
 	
 	if(action=='facebook')
 	{
-		res.end();
+		//res.end();
 		console.log("===Received a message from FB");
 
 		// get all the entries
@@ -55,6 +55,7 @@ module.exports = function(req,res,next){
 					   // NLP!
 					   console.log("===user sent text");
 					   checkControlOfChat(senderId,text);
+					   
 					    //fb.reply( fb.textMessage("hello"), senderId );
 					   //promises.push( nlp(text,senderId,msg_id) );
 
@@ -156,9 +157,13 @@ function checkControlOfChat(senderId,text){
 		}
 		else
 		{
-			console.log("===inserting a new row to the bot_users");
-			var new_user=insertNewBotUser(senderId);
-			Nlp(senderId,text);
+			try{
+				console.log("===inserting a new row to the bot_users");
+				var new_user=insertNewBotUser(senderId);
+				Nlp(senderId,text);
+			}
+			catch(error e){
+			}
 
 		}
 
