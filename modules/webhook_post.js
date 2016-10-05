@@ -102,9 +102,10 @@ function Nlp(senderId,text){
 	var in_msg=text.toString();
 	if ((in_msg=="hello") ||(in_msg=="hi")||(in_msg=="hey")||(in_msg=="helo"))
 	{
+	console.log("in_msg "+in_msg);
+	
 		sendDefaultMessage(senderId);
 	}
-	
 	
    
 }
@@ -137,7 +138,7 @@ function sendDefaultMessage(senderId){
 	var btn2=createButton("Live Chat","livechat");
 	var buttons=[btn1,btn2];
 	var title="Welcome to Larger than Life";
-	var subtitle="subtitle goes here"
+	var subtitle="subtitle goes here";
 	var image="http://www.netconnections.name/123/larger/images/donate.jpg";
 	var element1=fb.createElement(title,subtitle,image,buttons);
 	var elements=[element1];
