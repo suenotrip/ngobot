@@ -160,7 +160,7 @@ function sendQuestionsList(senderId){
 			var element=fb.createElementOnlyText(title,subtitle);
 			elements.push(element);
 			
-		}
+		});
         var message =fb.carouselMessage(elements);
         return fb.reply(message,senderId);
     },function(error){
