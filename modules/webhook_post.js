@@ -99,12 +99,18 @@ module.exports = function(req,res,next){
 
 function Nlp(senderId,text){
 
-	var in_msg=text.toString();
-	if ((in_msg=="hello") ||(in_msg=="hi")||(in_msg=="hey")||(in_msg=="helo"))
+	var in_msg=text.toString().toUpperCase();;
+	if ((in_msg=="HELLO") ||(in_msg=="HI")||(in_msg=="HEY")||(in_msg=="HELO"))
 	{
 	console.log("in_msg "+in_msg);
 	
 		sendDefaultMessage(senderId);
+	}
+	else if(in_msg=="STOP CHAT")
+	{
+		updateUserStatus(senderId,1);
+		var text="You are back with the Bot now. Continue."
+		fb.reply( fb.textMessage(text), senderId);
 	}
 	
    
@@ -132,6 +138,15 @@ function handlePostback(payload,senderId){
 		});
 	}
 	
+	else if(payload.toString()=="livechat"){
+		sendChatStartMessage(senderId);
+		updateUserStatus(senderId,0);
+	}
+	else if(payload.toString()=="stopchat"){
+		updateUserStatus(senderId,1);
+		var text="You are back with the Bot now. Continue."
+		fb.reply( fb.textMessage(text), senderId);
+	}
 	else if(payload.toString()=="qna"){
 		sendQuestionsList(senderId);
 	}
@@ -144,6 +159,19 @@ function sendDefaultMessage(senderId){
 	var title="Welcome to Larger than Life";
 	var subtitle="subtitle goes here";
 	var image="http://www.netconnections.name/123/larger/images/donate.jpg";
+	var element1=fb.createElement(title,subtitle,image,buttons);
+	var elements=[element1];
+	var message =fb.carouselMessage(elements);
+	fb.reply(message,senderId);
+}
+
+function sendChatStartMessage(senderId){
+	var btn1=fb.createButton("Stop Chat","stopchat");
+	
+	var buttons=[btn1];
+	var title="You are connected with a real human";
+	var subtitle="To Stop this chat, please press stop chat button or send STOP CHAT message";
+	var image="";
 	var element1=fb.createElement(title,subtitle,image,buttons);
 	var elements=[element1];
 	var message =fb.carouselMessage(elements);
