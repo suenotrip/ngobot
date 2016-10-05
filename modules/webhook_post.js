@@ -96,52 +96,16 @@ module.exports = function(req,res,next){
 
 
 
-function afterNlp(senderId,text){
+function Nlp(senderId,text){
 
-	fb.reply( fb.textMessage(text), senderId );
+	var in_msg=text.toString();
+	if ((in_msg=="hello") ||(in_msg=="hi")||(in_msg=="hey")||(in_msg=="helo"))
+	{
+		sendDefaultMessage(senderId);
+	}
 	
-   //var action = data.result.action;
-
-    /* console.log("===action",action);
-    if( data.result.source == "agent" ){
-        switch( action ){
-
-			case "agent.hello.babun":
-                hello(data);
-                break;
-            case "agent.about":
-                about(data);
-                break;
-
-            default:
-                //dontKnow(data);
-        }
-    }else if( data.result.source == "domains" ){
-        console.log("===domains");
-        // API.ai converts all our complex queries into
-        // a simplified, canonical form.
-        // We check this to decide our responses
-        if( action == "input.unknown" || action == "wisdom.unknown" ){
-            //dontKnow(data);
-        }else{
-            var simplified = data.result.parameters.simplified;
-            console.log("===simplified",simplified);
-            switch( simplified ){
-                case "how are you":
-                    howAreYou(data);
-                    break;
-                case "hello":
-                    hello(data);
-                    break;
-
-                default:
-                    console.log("===domains unknown/rejected action");
-                    //dontKnow(data);
-            }
-        }
-    }else{
-        //dontKnow(data);
-    } */
+	
+   
 }
 //------------------------------------------------------------------------------
 
@@ -167,6 +131,17 @@ function handlePostback(payload,senderId){
 	}
 }
 
+function sendDefaultMessage(senderId){
+	var btn1=createButton("Q&A","qna");
+	var btn2=createButton("Live Chat","livechat");
+	var buttons=[btn1,btn2];
+	var title="Welcome to Larger than Life";
+	var image="http://www.netconnections.name/123/larger/images/donate.jpg";
+	var element1=fb.createElement(title,subtitle,image,buttons);
+	var elements=[element1];
+	var message =fb.carouselMessage(elements);
+	fb.reply(message,senderId);
+}
 
 function checkControlOfChat(senderId,text){
 	return db.getBotUser(senderId).then(function(rows){
@@ -176,14 +151,14 @@ function checkControlOfChat(senderId,text){
 
 		  else{
 			console.log("===control lies with bot");
-			afterNlp(senderId,text);
+			Nlp(senderId,text);
 		  }
 		}
 		else
 		{
 			console.log("===inserting a new row to the bot_users");
 			var new_user=insertNewBotUser(senderId);
-			afterNlp(senderId,text);
+			Nlp(senderId,text);
 
 		}
 
@@ -213,23 +188,3 @@ function updateUserStatus(senderId,is_botactive){
 }
 
 
-//------------------------------------------------------------------------------
-function about(data){
-    var senderId = data.sessionId;
-
-}
-
-
-
-//------------------------------------------------------------------------------
-function hello(data){
-    var senderId = data.sessionId;
-
-}
-
-
-//------------------------------------------------------------------------------
-function randomIndex(array){
-    return Math.floor(Math.random()*array.length);
-}
-//------------------------------------------------------------------------------
