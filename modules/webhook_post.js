@@ -146,6 +146,7 @@ function sendDefaultMessage(senderId){
 
 function checkControlOfChat(senderId,text){
 	return db.getBotUser(senderId).then(function(rows){
+		console.log("==rows length"+rows.length);
 		if (rows.length>0)
 		{
 		  if(rows[0].is_botactive==0){console.log("===control lies with letsclap");}
@@ -157,11 +158,10 @@ function checkControlOfChat(senderId,text){
 		}
 		else
 		{
-				console.log("===inserting a new row to the bot_users");
-				var new_user=insertNewBotUser(senderId);
-				Nlp(senderId,text);
+			console.log("===inserting a new row to the bot_users");
+			var new_user=insertNewBotUser(senderId);
+			Nlp(senderId,text);
 	
-			
 		}
 
 	},function(error){
