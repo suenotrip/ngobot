@@ -153,7 +153,7 @@ function sendDefaultMessage(senderId){
 function sendQuestionsList(senderId){
 
 	return db.getMessagesOfType("questions").then(function(messages){
-		//console.log("messages from firebase "+messages);
+		console.log("messages from firebase "+messages);
 		var elements=[];
 		/* var message = messages[0];
         var text = message.text;
@@ -161,7 +161,11 @@ function sendQuestionsList(senderId){
 		for(var i = 0; i < messages.length; i++){
 			var title=messages[i].text;
 			var subtitle="subtitle";
-			var element=fb.createElementOnlyText(title,subtitle);
+			var btn1=fb.createButton("Q&A","qna");
+			var btn2=fb.createButton("Live Chat","livechat");
+			var buttons=[btn1,btn2];
+			var image="http://www.netconnections.name/123/larger/images/donate.jpg";
+			var element=fb.createElement(title,subtitle,image,buttons);
 			//var element=fb.createElementOnlyText(title,subtitle);
 			elements.push(element);
 			
