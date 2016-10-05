@@ -137,6 +137,7 @@ function sendDefaultMessage(senderId){
 	var btn2=createButton("Live Chat","livechat");
 	var buttons=[btn1,btn2];
 	var title="Welcome to Larger than Life";
+	var subtitle="subtitle goes here"
 	var image="http://www.netconnections.name/123/larger/images/donate.jpg";
 	var element1=fb.createElement(title,subtitle,image,buttons);
 	var elements=[element1];
