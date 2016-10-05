@@ -152,7 +152,7 @@ function sendDefaultMessage(senderId){
 
 function sendQuestionsList(senderId){
 
-	return db.getMessagesOfType("questions").then(function(messages){
+	return db.getMessagesOfType("about").then(function(messages){
 		console.log("messages from firebase "+messages);
 		//var elements=[];
 		var message = oneOf(messages);
