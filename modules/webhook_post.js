@@ -54,7 +54,8 @@ module.exports = function(req,res,next){
 				   }else{
 					   // NLP!
 					   console.log("===user sent text");
-					   promises.push( nlp(text,senderId,msg_id) );
+					    fb.reply( fb.textMessage("hello"), senderId );
+					   //promises.push( nlp(text,senderId,msg_id) );
 
 				   }
 			   }else if(isPostback){
@@ -66,7 +67,7 @@ module.exports = function(req,res,next){
 			   }// END IF FOR isTextMessage
 		   });
 		});
-		Q.all(promises).then(function(results){
+		/* Q.all(promises).then(function(results){
 			results.forEach(function(result){
 				//checkControlOfChat(result);
 
@@ -74,7 +75,7 @@ module.exports = function(req,res,next){
 			});
 		},function(error){
 			console.log("[webhook_post.js]",error);
-		});
+		}); */
 		return next();
 
 	}
