@@ -151,10 +151,10 @@ function sendDefaultMessage(senderId){
 }
 
 function sendQuestionsList(senderId){
-	return db.getMessagesOfType("messages").then(function(messages){
+	return db.getMessagesOfType("questions").then(function(messages){
 		var elements=[];
 		for(var i = 0; i < messages.length; i++){
-			var title=messages[i].text;
+			var title="title";
 			var subtitle="subtitle";
 			var btn1=fb.createButton("Q&A","qna");
 			var btn2=fb.createButton("Live Chat","livechat");
