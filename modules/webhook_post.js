@@ -161,10 +161,10 @@ function sendQuestionsList(senderId){
 		for(var i = 0; i < messages.length; i++){
 			var title=messages[i].text;
 			var subtitle="subtitle";
-			var btn1=fb.createButton("Q&A","qna");
-			var btn2=fb.createButton("Live Chat","livechat");
-			var buttons=[btn1,btn2];
-			var image="http://www.netconnections.name/123/larger/images/donate.jpg";
+			//var btn1=fb.createButton("Q&A","qna");
+			//var btn2=fb.createButton("Live Chat","livechat");
+			var buttons=[];
+			var image="";
 			var element=fb.createElement(title,subtitle,image,buttons);
 			//var element=fb.createElementOnlyText(title,subtitle);
 			elements.push(element);
