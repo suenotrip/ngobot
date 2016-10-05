@@ -191,7 +191,7 @@ Adapter.prototype.getBotUser= function(userId){
 	
     const query ="SELECT is_botactive " +
                   "FROM bot_users " +
-                  "WHERE user_id = " + userId;
+                  "WHERE user_id = " + this.db.escape(userId);
 				  
     var deferred = Q.defer();
     this.db.getConnection(function(err,connection){
