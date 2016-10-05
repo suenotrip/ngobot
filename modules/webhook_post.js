@@ -157,7 +157,12 @@ function sendQuestionsList(senderId){
 		{
 			var title=msg.text;
 			var subtitle="subtitle";
-			var element=fb.createElementOnlyText(title,subtitle);
+			var btn1=fb.createButton("Q&A","qna");
+			var btn2=fb.createButton("Live Chat","livechat");
+			var buttons=[btn1,btn2];
+			var image="http://www.netconnections.name/123/larger/images/donate.jpg";
+			var element=fb.createElement(title,subtitle,image,buttons);
+			//var element=fb.createElementOnlyText(title,subtitle);
 			elements.push(element);
 			
 		});
