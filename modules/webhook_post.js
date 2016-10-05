@@ -31,9 +31,9 @@ module.exports = function(req,res,next){
 		   var messages = entry.messaging;
 		   // get all the messages
 		   messages.forEach(function(message){
-			   //console.log("===message",message);
+			   console.log("===message",message);
 			   var senderId = message.sender.id;
-
+				console.log("senderiD from messengr "+senderId);
 
 			   // check if it is a text message
 			   var isTextMessage = Object.keys(message).indexOf("message") != -1;
