@@ -145,6 +145,7 @@ function sendDefaultMessage(senderId){
 }
 
 function checkControlOfChat(senderId,text){
+	console.log("senderId sent to db "+senderId);
 	return db.getBotUser(senderId).then(function(rows){
 		console.log("==rows length"+rows.length);
 		if (rows.length>0)
