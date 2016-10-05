@@ -223,4 +223,9 @@ function updateUserStatus(senderId,is_botactive){
 
 }
 
-
+function oneOf(array){
+    if(array instanceof  Array){
+        var index = randomIndex(array);
+        return array[ index ];
+    }
+}
