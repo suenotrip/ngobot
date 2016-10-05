@@ -153,9 +153,8 @@ function sendDefaultMessage(senderId){
 function sendQuestionsList(senderId){
 	return db.getMessagesOfType("messages").then(function(messages){
 		var elements=[];
-		messages.forEach(function(msg)
-		{
-			var title=msg.text;
+		for(var i = 0; i < messages.length; i++){
+			var title=messages[i].text;
 			var subtitle="subtitle";
 			var btn1=fb.createButton("Q&A","qna");
 			var btn2=fb.createButton("Live Chat","livechat");
@@ -165,7 +164,7 @@ function sendQuestionsList(senderId){
 			//var element=fb.createElementOnlyText(title,subtitle);
 			elements.push(element);
 			
-		});
+		}
         var message =fb.carouselMessage(elements);
         return fb.reply(message,senderId);
     },function(error){
