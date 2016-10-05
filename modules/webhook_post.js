@@ -157,13 +157,11 @@ function checkControlOfChat(senderId,text){
 		}
 		else
 		{
-			try{
 				console.log("===inserting a new row to the bot_users");
 				var new_user=insertNewBotUser(senderId);
 				Nlp(senderId,text);
-			}
-			catch(error e){
-			}
+	
+			
 
 		}
 
