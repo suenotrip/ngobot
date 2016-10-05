@@ -134,8 +134,8 @@ function handlePostback(payload,senderId){
 }
 
 function sendDefaultMessage(senderId){
-	var btn1=createButton("Q&A","qna");
-	var btn2=createButton("Live Chat","livechat");
+	var btn1=fb.createButton("Q&A","qna");
+	var btn2=fb.createButton("Live Chat","livechat");
 	var buttons=[btn1,btn2];
 	var title="Welcome to Larger than Life";
 	var subtitle="subtitle goes here";
