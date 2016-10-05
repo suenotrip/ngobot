@@ -18,7 +18,7 @@ var options = {
 function Adapter(){
     if(this instanceof  Adapter){
         //this.root = new Firebase( process.env.FIREBASE_URL );
-		this.root=new Firebase("https://glaring-heat-2025.firebaseio.com/");
+		this.root=new Firebase("https://largerthanlife-8e1f8.firebaseio.com/");
         this.db = mysql.createPool(options);    
     }else{
         return new Adapter();

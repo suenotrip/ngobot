@@ -44,6 +44,13 @@ function createElement(title,subtitle,image,buttons){
         "buttons" : buttons
     }
 }
+
+function createElementOnlyText(title,subtitle){
+    return {
+        "title" : title,
+        "subtitle" : subtitle
+    }
+}
 //--------------------------------------------------------------------------------
 function createButton(title,payload){
     return {

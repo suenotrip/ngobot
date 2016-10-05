@@ -131,6 +131,10 @@ function handlePostback(payload,senderId){
 			console.log("[webhook_post.js]",error);
 		});
 	}
+	
+	else if(payload.toString()=="qna"){
+		sendQuestionsList(senderId);
+	}
 }
 
 function sendDefaultMessage(senderId){
@@ -144,6 +148,24 @@ function sendDefaultMessage(senderId){
 	var elements=[element1];
 	var message =fb.carouselMessage(elements);
 	fb.reply(message,senderId);
+}
+
+function sendQuestionsList(senderId){
+	return db.getMessagesOfType("messages").then(function(messages){
+		var elements=[];
+		messages.forEach(function(msg)
+		{
+			var title=msg.text;
+			var subtitle="subtitle";
+			var element=fb.createElementOnlyText(title,subtitle);
+			elements.push(element);
+			
+		}
+        var message =fb.carouselMessage(elements);
+        return fb.reply(message,senderId);
+    },function(error){
+        console.log("[webhook_post.js]",error);
+    });
 }
 
 function checkControlOfChat(senderId,text){
