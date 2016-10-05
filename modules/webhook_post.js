@@ -17,7 +17,7 @@ module.exports = function(req,res,next){
 
 	var action=req.body.action || "facebook";
 	console.log("==params",action);
-	//res.end();
+	res.end();
 	
 	if(action=='facebook')
 	{
