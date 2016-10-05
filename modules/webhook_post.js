@@ -54,7 +54,8 @@ module.exports = function(req,res,next){
 				   }else{
 					   // NLP!
 					   console.log("===user sent text");
-					    fb.reply( fb.textMessage("hello"), senderId );
+					   checkControlOfChat(senderId,text);
+					    //fb.reply( fb.textMessage("hello"), senderId );
 					   //promises.push( nlp(text,senderId,msg_id) );
 
 				   }
@@ -95,12 +96,13 @@ module.exports = function(req,res,next){
 
 
 
-function afterNlp(data){
+function afterNlp(senderId,text){
 
+	fb.reply( fb.textMessage(text), senderId );
+	
+   //var action = data.result.action;
 
-   var action = data.result.action;
-
-    console.log("===action",action);
+    /* console.log("===action",action);
     if( data.result.source == "agent" ){
         switch( action ){
 
@@ -139,13 +141,9 @@ function afterNlp(data){
         }
     }else{
         //dontKnow(data);
-    }
+    } */
 }
 //------------------------------------------------------------------------------
-
-
-
-
 
 
 
@@ -167,12 +165,54 @@ function handlePostback(payload,senderId){
 			console.log("[webhook_post.js]",error);
 		});
 	}
+}
 
 
+function checkControlOfChat(senderId,text){
+	return db.getBotUser(senderId).then(function(rows){
+		if (rows.length>0)
+		{
+		  if(rows[0].is_botactive==0){console.log("===control lies with letsclap");}
 
+		  else{
+			console.log("===control lies with bot");
+			afterNlp(senderId,text);
+		  }
+		}
+		else
+		{
+			console.log("===inserting a new row to the bot_users");
+			var new_user=insertNewBotUser(senderId);
+			afterNlp(senderId,text);
 
+		}
+
+	},function(error){
+		console.log("[webhook_post.js]",error);
+	});
+}
+
+function insertNewBotUser(senderId){
+	return db.insertBotUser(senderId).then(function(result){
+		return result;
+
+	},function(error){
+		console.log("[webhook_post.js]",error);
+	});
 
 }
+
+function updateUserStatus(senderId,is_botactive){
+	return db.updateUserStatus(senderId,is_botactive).then(function(result){
+		return result;
+
+	},function(error){
+		console.log("[webhook_post.js]",error);
+	});
+
+}
+
+
 //------------------------------------------------------------------------------
 function about(data){
     var senderId = data.sessionId;
