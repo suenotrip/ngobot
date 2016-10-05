@@ -152,26 +152,22 @@ function sendDefaultMessage(senderId){
 
 function sendQuestionsList(senderId){
 
-	return db.getMessagesOfType("about").then(function(messages){
-		console.log("messages from firebase "+messages);
-		//var elements=[];
-		var message = messages[0];
+	return db.getMessagesOfType("questions").then(function(messages){
+		//console.log("messages from firebase "+messages);
+		var elements=[];
+		/* var message = messages[0];
         var text = message.text;
-        return fb.reply( fb.textMessage(text), senderId);
-		/* for(var i = 0; i < messages.length; i++){
-			var title="title";
+        return fb.reply( fb.textMessage(text), senderId); */
+		for(var i = 0; i < messages.length; i++){
+			var title=messages[i].text;
 			var subtitle="subtitle";
-			var btn1=fb.createButton("Q&A","qna");
-			var btn2=fb.createButton("Live Chat","livechat");
-			var buttons=[btn1,btn2];
-			var image="http://www.netconnections.name/123/larger/images/donate.jpg";
-			var element=fb.createElement(title,subtitle,image,buttons);
+			var element=fb.createElementOnlyText(title,subtitle);
 			//var element=fb.createElementOnlyText(title,subtitle);
 			elements.push(element);
 			
 		}
-        var message =fb.carouselMessage(elements); */
-        //return fb.reply(message,senderId);
+        var message =fb.carouselMessage(elements); 
+        return fb.reply(message,senderId);
     },function(error){
         console.log("[webhook_post.js]",error);
     });
