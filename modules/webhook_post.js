@@ -152,8 +152,11 @@ function sendDefaultMessage(senderId){
 
 function sendQuestionsList(senderId){
 	return db.getMessagesOfType("questions").then(function(messages){
-		var elements=[];
-		for(var i = 0; i < messages.length; i++){
+		//var elements=[];
+		var message = oneOf(messages);
+        var text = message.text;
+        return fb.reply( fb.textMessage(text), senderId);
+		/* for(var i = 0; i < messages.length; i++){
 			var title="title";
 			var subtitle="subtitle";
 			var btn1=fb.createButton("Q&A","qna");
@@ -165,8 +168,8 @@ function sendQuestionsList(senderId){
 			elements.push(element);
 			
 		}
-        var message =fb.carouselMessage(elements);
-        return fb.reply(message,senderId);
+        var message =fb.carouselMessage(elements); */
+        //return fb.reply(message,senderId);
     },function(error){
         console.log("[webhook_post.js]",error);
     });
