@@ -1,6 +1,6 @@
 var request = require("request");
 var Q = require("q");
-var dashbot = require('dashbot')(process.env.DASHBOT_API_KEY).facebook;
+
 //--------------------------------------------------------------------------------
 function textMessage(message){
     return {
@@ -66,7 +66,7 @@ function reply(message,senderId){
 		message: message
 	  }
 	};
-	const requestId = dashbot.logOutgoing(requestData);
+	//const requestId = dashbot.logOutgoing(requestData);
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {
@@ -86,7 +86,7 @@ function reply(message,senderId){
         }else{
             if(response.statusCode == 200){
                 console.log("===sent message to FB");
-				 dashbot.logOutgoingResponse(requestId, err, response);
+				 //dashbot.logOutgoingResponse(requestId, err, response);
                 deferred.resolve(body);
             }else{
                 console.log("===error sending message",body);
@@ -108,9 +108,9 @@ function notifyout(message,senderId){
 		message: message
 	  }
 	};
-	const requestId = dashbot.logOutgoing(requestData);
+	//const requestId = dashbot.logOutgoing(requestData);
 	request(requestData, function(error, response, body) {
-	  dashbot.logOutgoingResponse(requestId, error, response);
+	  //dashbot.logOutgoingResponse(requestId, error, response);
 	});
 	
 }

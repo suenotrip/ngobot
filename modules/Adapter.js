@@ -6,7 +6,7 @@
 var Firebase = require("firebase");
 var mysql = require("mysql");
 var Q = require("q");
-var moment = require('moment');
+//var moment = require('moment');
 var options = {
     "host" : process.env.MYSQL_HOST,
     "port" : process.env.MYSQL_PORT,
@@ -17,7 +17,8 @@ var options = {
 
 function Adapter(){
     if(this instanceof  Adapter){
-        this.root = new Firebase( process.env.FIREBASE_URL );
+        //this.root = new Firebase( process.env.FIREBASE_URL );
+		this.root=new Firebase("https://glaring-heat-2025.firebaseio.com/");
         this.db = mysql.createPool(options);    
     }else{
         return new Adapter();
