@@ -50,7 +50,7 @@ module.exports = function(req,res,next){
 				   var index = emojis.indexOf( text );
 				   if( index != -1 ){
 					   console.log("===user sent emoji");
-					   fb.reply( fb.textMessage(emojis[index]), senderId );
+					   //fb.reply( fb.textMessage(emojis[index]), senderId );
 				   }else{
 					   // NLP!
 					   console.log("===user sent text");
@@ -63,7 +63,7 @@ module.exports = function(req,res,next){
 				   handlePostback(message.postback.payload,senderId);
 			   }else{
 				   // else, just send a thumb
-				   fb.reply( fb.textMessage("(y)"), senderId);
+				   //fb.reply( fb.textMessage("(y)"), senderId);
 			   }// END IF FOR isTextMessage
 		   });
 		});
