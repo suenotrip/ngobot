@@ -162,7 +162,6 @@ function checkControlOfChat(senderId,text){
 				Nlp(senderId,text);
 	
 			
-
 		}
 
 	},function(error){
