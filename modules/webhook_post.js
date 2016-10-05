@@ -155,7 +155,7 @@ function sendQuestionsList(senderId){
 	return db.getMessagesOfType("about").then(function(messages){
 		console.log("messages from firebase "+messages);
 		//var elements=[];
-		var message = oneOf(messages);
+		var message = messages[0];
         var text = message.text;
         return fb.reply( fb.textMessage(text), senderId);
 		/* for(var i = 0; i < messages.length; i++){
