@@ -40,7 +40,7 @@ function createElement(title,subtitle,image,buttons){
     return {
         "title" : title,
         "subtitle" : subtitle,
-        "image_url" : (image || "http://www.babun.io/wp-content/uploads/2016/03/BabunMetaPic-1.png"),
+        "image_url" : image,
         "buttons" : buttons
     }
 }
