@@ -161,9 +161,9 @@ function sendQuestionsList(senderId){
 		for(var i = 0; i < messages.length; i++){
 			var title=messages[i].text;
 			var subtitle="subtitle";
-			//var btn1=fb.createButton("Q&A","qna");
-			//var btn2=fb.createButton("Live Chat","livechat");
-			var buttons=[];
+			btn_payload="answer"+i;
+			var btn1=fb.createButton("Answer",btn_payload);
+			var buttons=[btn1];
 			var image="";
 			var element=fb.createElement(title,subtitle,image,buttons);
 			//var element=fb.createElementOnlyText(title,subtitle);
