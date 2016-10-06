@@ -150,6 +150,9 @@ function handlePostback(payload,senderId){
 	else if(payload.toString()=="qna"){
 		sendQuestionsList(senderId);
 	}
+	else if(payload.toString()=="answer1"){	
+		sendAnswerOnlyText(senderId,1);
+	}
 }
 
 function sendDefaultMessage(senderId){
@@ -183,9 +186,6 @@ function sendQuestionsList(senderId){
 	return db.getMessagesOfType("questions").then(function(messages){
 		console.log("messages from firebase "+messages);
 		var elements=[];
-		/* var message = messages[0];
-        var text = message.text;
-        return fb.reply( fb.textMessage(text), senderId); */
 		for(var i = 0; i < messages.length; i++){
 			var title=messages[i].title;
 			var subtitle=messages[i].subtitle;
@@ -205,6 +205,16 @@ function sendQuestionsList(senderId){
     });
 }
 
+function sendAnswerOnlyText(senderId,0){
+	return db.getMessagesOfType("answers").then(function(messages){
+		var text=messages[0].text;
+		
+        return fb.reply(fb.textMessage(text), senderId);
+    },function(error){
+        console.log("[webhook_post.js]",error);
+    });
+
+}
 function checkControlOfChat(senderId,text){
 	console.log("senderId sent to db "+senderId);
 	return db.getBotUser(senderId).then(function(rows){
