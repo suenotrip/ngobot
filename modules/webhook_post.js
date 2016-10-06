@@ -187,8 +187,8 @@ function sendQuestionsList(senderId){
         var text = message.text;
         return fb.reply( fb.textMessage(text), senderId); */
 		for(var i = 0; i < messages.length; i++){
-			var title=messages[i].text;
-			var subtitle="subtitle";
+			var title=messages[i].title;
+			var subtitle=messages[i].subtitle;
 			btn_payload="answer"+i;
 			var btn1=fb.createButton("Answer",btn_payload);
 			var buttons=[btn1];
