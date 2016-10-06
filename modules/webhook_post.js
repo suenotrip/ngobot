@@ -116,6 +116,11 @@ function Nlp(senderId,text){
 		var text="You are back with the Bot now. Continue."
 		fb.reply( fb.textMessage(text), senderId);
 	}   
+	else if(in_msg=="LIVE CHAT")
+	{
+		sendChatStartMessage(senderId);
+		updateUserStatus(senderId,0);
+	}   
 }
 //------------------------------------------------------------------------------
 
