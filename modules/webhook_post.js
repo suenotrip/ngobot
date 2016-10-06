@@ -151,7 +151,7 @@ function handlePostback(payload,senderId){
 		sendQuestionsList(senderId);
 	}
 	else if(payload.toString()=="answer1"){	
-		sendAnswerOnlyText(senderId,1);
+		sendAnswerOnlyText(senderId,0);
 	}
 }
 
@@ -196,7 +196,6 @@ function sendQuestionsList(senderId){
 			var element=fb.createElement(title,subtitle,image,buttons);
 			//var element=fb.createElementOnlyText(title,subtitle);
 			elements.push(element);
-			
 		}
         var message =fb.carouselMessage(elements); 
         return fb.reply(message,senderId);
@@ -205,15 +204,14 @@ function sendQuestionsList(senderId){
     });
 }
 
-function sendAnswerOnlyText(senderId,0){
+function sendAnswerOnlyText(senderId,index){
 	return db.getMessagesOfType("answers").then(function(messages){
-		var text=messages[0].text;
+		var text=messages[index].text;
 		
         return fb.reply(fb.textMessage(text), senderId);
     },function(error){
         console.log("[webhook_post.js]",error);
     });
-
 }
 function checkControlOfChat(senderId,text){
 	console.log("senderId sent to db "+senderId);
