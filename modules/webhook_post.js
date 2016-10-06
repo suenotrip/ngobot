@@ -150,7 +150,7 @@ function handlePostback(payload,senderId){
 	else if(payload.toString()=="qna"){
 		sendQuestionsList(senderId);
 	}
-	else if(payload.toString()=="answer1"){	
+	else if(payload.toString()=="answer0"){	
 		sendAnswerOnlyText(senderId,0);
 	}
 }
