@@ -153,6 +153,24 @@ function handlePostback(payload,senderId){
 	else if(payload.toString()=="answer0"){	
 		sendAnswerOnlyText(senderId,0);
 	}
+	else if(payload.toString()=="answer1"){	
+		sendAnswerOnlyText(senderId,1);
+	}
+	else if(payload.toString()=="answer2"){	
+		sendAnswerOnlyText(senderId,2);
+	}
+	else if(payload.toString()=="answer3"){	
+		sendAnswerOnlyText(senderId,3);
+	}
+	else if(payload.toString()=="answer4"){	
+		sendAnswerOnlyText(senderId,4);
+	}
+	else if(payload.toString()=="answer5"){	
+		sendAnswerOnlyText(senderId,5);
+	}
+	else if(payload.toString()=="answer6"){	
+		sendAnswerOnlyText(senderId,6);
+	}
 }
 
 function sendDefaultMessage(senderId){
