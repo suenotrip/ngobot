@@ -106,7 +106,7 @@ function Nlp(senderId,text){
 	
 		sendDefaultMessage(senderId);
 	}
-	else if (in_msg=="QNA")
+	else if (in_msg=="FAQ")
 	{
 		sendQuestionsList(senderId);
 	}
