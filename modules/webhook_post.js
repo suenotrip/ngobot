@@ -166,7 +166,7 @@ function sendDefaultMessage(senderId){
 	var btn2=fb.createButton("Live Chat","livechat");
 	var buttons=[btn1,btn2];
 	var title="Welcome to Larger than Life";
-	var subtitle="subtitle goes here";
+	var subtitle="An outstanding nonprofit organization, helps seriously ill children with cancer and their families cope with their fears, treatments and social isolation through the Dream Trips and many more family activities.";
 	var image="http://www.netconnections.name/123/larger/images/donate.jpg";
 	var element1=fb.createElement(title,subtitle,image,buttons);
 	var elements=[element1];
