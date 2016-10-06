@@ -100,7 +100,7 @@ module.exports = function(req,res,next){
 function Nlp(senderId,text){
 
 	var in_msg=text.toString().toUpperCase();;
-	if ((in_msg=="HELLO") ||(in_msg=="HI")||(in_msg=="HEY")||(in_msg=="HELO"))
+	if ((in_msg=="HELLO") ||(in_msg=="HI")||(in_msg=="HEY")||(in_msg=="HELO")||(in_msg=="START"))
 	{
 	console.log("in_msg "+in_msg);
 	
@@ -111,9 +111,7 @@ function Nlp(senderId,text){
 		updateUserStatus(senderId,1);
 		var text="You are back with the Bot now. Continue."
 		fb.reply( fb.textMessage(text), senderId);
-	}
-	
-   
+	}   
 }
 //------------------------------------------------------------------------------
 
@@ -122,20 +120,10 @@ function Nlp(senderId,text){
 function handlePostback(payload,senderId){
     console.log("===postback",payload);
     console.log("===senderId",senderId);
-
-	if(payload.toString().trim()==="hello")
-	{
-		var promises = [];
-	     var msg_id="1234";
-		 var text="hello";
-		 promises.push( nlp(text,senderId,msg_id) );
-		 Q.all(promises).then(function(results){
-			results.forEach(function(result){
-            afterNlp(result);
-        });
-		},function(error){
-			console.log("[webhook_post.js]",error);
-		});
+	
+	if(payload.toString()=="start"){
+		var text="start";
+		Nlp(senderId,text);
 	}
 	
 	else if(payload.toString()=="livechat"){
