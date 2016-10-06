@@ -106,6 +106,10 @@ function Nlp(senderId,text){
 	
 		sendDefaultMessage(senderId);
 	}
+	else if (in_msg=="qna")
+	{
+		sendQuestionsList(senderId);
+	}
 	else if(in_msg=="STOP CHAT")
 	{
 		updateUserStatus(senderId,1);
