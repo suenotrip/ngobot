@@ -110,7 +110,7 @@ function Nlp(senderId,text){
 	{
 		sendQuestionsList(senderId);
 	}
-	else if(in_msg=="STOP CHAT")
+	else if(in_msg=="STOP CHAT" ||in_msg="עצור שיחה")
 	{
 		updateUserStatus(senderId,1);
 		var text="You are back with the Bot now. Continue."
@@ -176,7 +176,7 @@ function sendDefaultMessage(senderId){
 	var buttons=[btn1,btn2];
 	var title="ברוכים הבאים לגדולים מהחיים";
 	var subtitle="באפשרותך לצפות בשאלות נפוצות ולקבל תשובות מיידיות, או לחילופין לבקש נציג אנושי.";
-	var image="http://gdolim.org.il/wp-content/uploads/2016/09/logo.jpg";
+	var image="http://amit-web.co.il/gdolim.jpg";
 	var element1=fb.createElement(title,subtitle,image,buttons);
 	var elements=[element1];
 	var message =fb.carouselMessage(elements);
@@ -184,11 +184,11 @@ function sendDefaultMessage(senderId){
 }
 
 function sendChatStartMessage(senderId){
-	var btn1=fb.createButton("Stop Chat","stopchat");
+	var btn1=fb.createButton("= עצור שיחה","stopchat");
 	
 	var buttons=[btn1];
-	var title="You are connected with a real human";
-	var subtitle="To Stop this chat, please press stop chat button or send STOP CHAT message";
+	var title="כעת התחברת לנציג אנושי";
+	var subtitle="כדי לעצור את השיחה עם הנציג האנושי ולחזור לבוט יש ללחוץ על "עצור שיחה" או לשלוח "עצור שיחה" בטקסט רגיל";
 	var image="";
 	var element1=fb.createElement(title,subtitle,image,buttons);
 	var elements=[element1];
