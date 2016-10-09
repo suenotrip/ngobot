@@ -110,7 +110,7 @@ function Nlp(senderId,text){
 	{
 		sendQuestionsList(senderId);
 	}
-	else if(in_msg=="STOP CHAT" ||in_msg="עצור שיחה")
+	else if(in_msg=="STOP CHAT" ||text.toString()="עצור שיחה")
 	{
 		updateUserStatus(senderId,1);
 		var text="You are back with the Bot now. Continue."
