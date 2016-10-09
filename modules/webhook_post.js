@@ -168,6 +168,9 @@ function handlePostback(payload,senderId){
 	else if(payload.toString()=="answer6"){	
 		sendAnswerOnlyText(senderId,6);
 	}
+	else if(payload.toString()=="answer7"){	
+		sendAnswerOnlyText(senderId,7);
+	}
 }
 
 function sendDefaultMessage(senderId){
