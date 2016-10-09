@@ -175,7 +175,7 @@ function sendDefaultMessage(senderId){
 	var btn2=fb.createButton("נציג אנושי","livechat");
 	var buttons=[btn1,btn2];
 	var title="ברוכים הבאים לגדולים מהחיים";
-	var subtitle="באפשרותכם לצפות בשאלות נפוצות ולקבל תשובות מידיות, או לחילופין לבקש נציג אנושי.";
+	var subtitle="באפשרותך לצפות בשאלות נפוצות ולקבל תשובות מיידיות, או לחילופין לבקש נציג אנושי.";
 	var image="http://gdolim.org.il/wp-content/uploads/2016/09/logo.jpg";
 	var element1=fb.createElement(title,subtitle,image,buttons);
 	var elements=[element1];
