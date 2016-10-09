@@ -184,11 +184,11 @@ function sendDefaultMessage(senderId){
 }
 
 function sendChatStartMessage(senderId){
-	var btn1=fb.createButton("= עצור שיחה","stopchat");
+	var btn1=fb.createButton("עצור שיחה","stopchat");
 	
 	var buttons=[btn1];
 	var title="כעת התחברת לנציג אנושי";
-	var subtitle="כדי לעצור את השיחה עם הנציג האנושי ולחזור לבוט יש ללחוץ על עצור שיחה או לשלוח עצור שיחה בטקסט רגיל";
+	var subtitle="כדי לחזור אל הבוט יש ללחוץ על עצור שיחה או פשוט לשלוח עצור שיחה";
 	var image="";
 	var element1=fb.createElement(title,subtitle,image,buttons);
 	var elements=[element1];
