@@ -171,12 +171,12 @@ function handlePostback(payload,senderId){
 }
 
 function sendDefaultMessage(senderId){
-	var btn1=fb.createButton("Q&A","qna");
-	var btn2=fb.createButton("Live Chat","livechat");
+	var btn1=fb.createButton("שאלות נפוצות","qna");
+	var btn2=fb.createButton("נציג אנושי","livechat");
 	var buttons=[btn1,btn2];
-	var title="Welcome to Larger than Life";
-	var subtitle="An outstanding nonprofit organization, helps seriously ill children with cancer and their families cope with their fears, treatments and social isolation through the Dream Trips and many more family activities.";
-	var image="http://www.netconnections.name/123/larger/images/donate.jpg";
+	var title="ברוכים הבאים לגדולים מהחיים";
+	var subtitle="באפשרותכם לצפות בשאלות נפוצות ולקבל תשובות מידיות, או לחילופין לבקש נציג אנושי.";
+	var image="http://gdolim.org.il/wp-content/uploads/2016/09/logo.jpg";
 	var element1=fb.createElement(title,subtitle,image,buttons);
 	var elements=[element1];
 	var message =fb.carouselMessage(elements);
