@@ -205,7 +205,7 @@ function sendQuestionsList(senderId){
 			var title=messages[i].title;
 			var subtitle=messages[i].subtitle;
 			btn_payload="answer"+i;
-			var btn1=fb.createButton("Answer",btn_payload);
+			var btn1=fb.createButton("הצג תשובה",btn_payload);
 			var buttons=[btn1];
 			var image="";
 			var element=fb.createElement(title,subtitle,image,buttons);
